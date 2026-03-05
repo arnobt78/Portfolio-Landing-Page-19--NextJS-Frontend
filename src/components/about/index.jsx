@@ -3,9 +3,13 @@ import ItemLayout from "./ItemLayout";
 import Link from "next/link";
 import StatsImage from "./StatsImage";
 
-// Set in .env.local for live stats; copy from .env.example. When unset, StatsImage falls back to placeholder.
-const githubStatsBaseUrl = process.env.NEXT_PUBLIC_GITHUB_STATS_URL;
-const githubStreakBaseUrl = process.env.NEXT_PUBLIC_GITHUB_STREAK_STATS_URL;
+// Optional .env override; when unset we use these public URLs (no API key). StatsImage shows placeholder on 503/fail.
+const githubStatsBaseUrl =
+  process.env.NEXT_PUBLIC_GITHUB_STATS_URL ||
+  "https://github-readme-stats.vercel.app";
+const githubStreakBaseUrl =
+  process.env.NEXT_PUBLIC_GITHUB_STREAK_STATS_URL ||
+  "https://github-readme-streak-stats.herokuapp.com";
 
 // GitHub profile used for readme-stats and streak-stats (https://github.com/arnobt78)
 const GITHUB_USERNAME = "arnobt78";
