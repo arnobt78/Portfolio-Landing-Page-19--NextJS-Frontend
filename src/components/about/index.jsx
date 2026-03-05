@@ -1,8 +1,7 @@
-"use client";
-/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import ItemLayout from "./ItemLayout";
 import Link from "next/link";
+import StatsImage from "./StatsImage";
 
 // Optional env override; defaults point to public GitHub stats APIs
 const githubStatsBaseUrl =
@@ -18,15 +17,8 @@ const GITHUB_USERNAME = "arnobt78";
 // Pinned repo for the pin card; use a repo that exists on your profile
 const GITHUB_PINNED_REPO = "portfolio-ui-19";
 
-// Fallback when external stats APIs (e.g. github-readme-stats) return 503 or fail; no API key needed
-const PLACEHOLDER_STATS_URL = "/placeholder-stats.svg";
-
-// About section: bio, stats, GitHub cards (top langs, main stats, streak), skill icons, pinned repo
+// About section (Server Component): bio, stats, GitHub cards; StatsImage is client-only for fallback
 const AboutDetails = () => {
-  const onImgError = (e) => {
-    e.target.onerror = null;
-    e.target.src = PLACEHOLDER_STATS_URL;
-  };
   return (
     <section className="py-20 w-full">
       <div className="grid grid-cols-12 gap-4 xs:gap-6  md:gap-8 w-full">
@@ -71,42 +63,30 @@ const AboutDetails = () => {
         <ItemLayout
           className={"col-span-full sm:col-span-6 md:col-span-4 !p-0"}
         >
-          <img
-            className="w-full h-auto"
+          <StatsImage
             src={`${githubStatsBaseUrl}/api/top-langs?username=${GITHUB_USERNAME}&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false`}
             alt="GitHub top languages"
-            loading="lazy"
-            onError={onImgError}
           />
         </ItemLayout>
 
         <ItemLayout className={"col-span-full md:col-span-8 !p-0"}>
-          <img
-            className="w-full h-auto"
+          <StatsImage
             src={`${githubStatsBaseUrl}/api?username=${GITHUB_USERNAME}&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false`}
             alt="GitHub stats"
-            loading="lazy"
-            onError={onImgError}
           />
         </ItemLayout>
 
         <ItemLayout className={"col-span-full"}>
-          <img
-            className="w-full h-auto"
+          <StatsImage
             src={`https://skillicons.dev/icons?i=appwrite,aws,babel,bootstrap,cloudflare,css,d3,docker,figma,firebase,gatsby,git,github,graphql,html,ipfs,js,jquery,kubernetes,linux,mongodb,mysql,netlify,nextjs,nodejs,npm,postgres,react,redux,replit,sass,supabase,tailwind,threejs,vercel,vite,vscode,yarn`}
             alt="Skills"
-            loading="lazy"
-            onError={onImgError}
           />
         </ItemLayout>
 
         <ItemLayout className={"col-span-full md:col-span-6 !p-0"}>
-          <img
-            className="w-full h-auto"
+          <StatsImage
             src={`${githubStreakBaseUrl}?user=${GITHUB_USERNAME}&theme=dark&hide_border=true&type=svg&background=EB545400&ring=FEFE5B&currStreakLabel=FEFE5B`}
             alt="GitHub streak"
-            loading="lazy"
-            onError={onImgError}
           />
         </ItemLayout>
 
@@ -117,12 +97,9 @@ const AboutDetails = () => {
             rel="noopener noreferrer"
             className="w-full"
           >
-            <img
-              className="w-full h-auto"
+            <StatsImage
               src={`${githubStatsBaseUrl}/api/pin/?username=${GITHUB_USERNAME}&repo=${GITHUB_PINNED_REPO}&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false&description_lines_count=2`}
               alt="Pinned repo"
-              loading="lazy"
-              onError={onImgError}
             />
           </Link>
         </ItemLayout>
