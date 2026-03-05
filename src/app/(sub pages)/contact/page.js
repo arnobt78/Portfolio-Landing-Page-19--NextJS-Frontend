@@ -6,6 +6,7 @@ export const metadata = {
   title: "Contact",
 };
 
+// Contact page: background, intro copy, and contact form (demo toast or EmailJS when configured)
 export default function Contact() {
   return (
     <>

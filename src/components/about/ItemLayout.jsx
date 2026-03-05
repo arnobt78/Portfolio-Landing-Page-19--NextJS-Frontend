@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import clsx from "clsx";
 
+// Card wrapper with scale-in animation when it enters viewport (viewport once: true)
 const ItemLayout = ({ children, className }) => {
   return (
     <motion.div

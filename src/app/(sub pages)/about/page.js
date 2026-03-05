@@ -7,10 +7,12 @@ const HatModel = dynamic(() => import("@/components/models/HatModel"), {
   ssr: false,
 });
 
+// Page title for SEO; root layout template becomes "About | John Doe's Portfolio"
 export const metadata = {
   title: "About",
 };
 
+// About page: background, Hat 3D model, headline, and AboutDetails (bio + GitHub/skill widgets)
 export default function Home() {
   return (
     <>

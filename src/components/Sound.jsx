@@ -4,6 +4,7 @@ import { Volume2, VolumeX } from "lucide-react";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
+// Music consent modal: rendered into #my-modal so it sits above other content
 const Modal = ({ onClose, toggle }) => {
   return createPortal(
     <div className="fixed inset-0 bg-background/60 backdrop-blur-sm flex items-center justify-center">
@@ -34,11 +35,13 @@ const Modal = ({ onClose, toggle }) => {
   );
 };
 
+// Background music with consent: first visit shows modal; choice stored in localStorage (3-day expiry)
 const Sound = () => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  // Browsers often require a user gesture before playing audio; this runs on first click/key/touch
   const handleFirstUserInteraction = useCallback(() => {
     const musicConsent = localStorage.getItem("musicConsent");
     if (musicConsent === "true" && audioRef.current?.paused) {
@@ -77,6 +80,7 @@ const Sound = () => {
     };
   }, [handleFirstUserInteraction]);
 
+  // Toggle play/pause and persist consent + timestamp for 3-day reuse
   const toggle = () => {
     const newState = !isPlaying;
     setIsPlaying(!isPlaying);

@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer base {
+  /* Theme tokens: used by Tailwind (see tailwind.config.js colors) and FireFliesBackground */
   :root {
     --background: 27 27 27;
     --foreground: 225 225 225;
@@ -13,15 +14,18 @@
 }
 
 @layer utilities {
+  /* Used on nav ring so spinning pauses on hover */
   .pause {
     animation-play-state: paused;
   }
 
+  /* Glass-style panel used by nav buttons, HomeBtn, form inputs, project cards */
   .custom-bg {
     @apply bg-background/20 border border-accent/30 border-solid backdrop-blur-[6px] shadow-glass-inset hover:shadow-glass-sm;
   }
 }
 
+/* Used by FireFliesBackground for firefly movement */
 @keyframes move {
   0% {
     transform: translate(0, 0);

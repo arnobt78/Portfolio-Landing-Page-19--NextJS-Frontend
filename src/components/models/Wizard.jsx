@@ -6,12 +6,14 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
+// Home page 3D character: gentle vertical bob via useFrame and elapsedTime
 const Wizard = React.memo(function Wizard(props) {
   // Use React.memo for performance optimization
   const { nodes, materials } = useGLTF("/models/wizard-transformed.glb");
 
   const modelRef = useRef();
 
+  // Subtle bounce each frame using sine of elapsed time
   useFrame((state) => {
     modelRef.current.position.y =
       -1.5 + Math.sin(state.clock.elapsedTime) * 0.15;

@@ -16,6 +16,7 @@ Websites:
 
 */
 
+// Project list for the /projects page; each item is rendered by ProjectLayout
 export const projectsData = [
   {
     id: 1,
@@ -89,6 +90,7 @@ export const projectsData = [
   },
 ];
 
+// Navigation config: used by Navigation + NavButton; newTab: true opens in new window
 export const BtnList = [
   { label: "Home", link: "/", icon: "home", newTab: false },
   { label: "About", link: "/about", icon: "about", newTab: false },

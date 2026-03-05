@@ -3,6 +3,7 @@ import React from "react";
 import ItemLayout from "./ItemLayout";
 import Link from "next/link";
 
+// Optional env override; defaults point to public GitHub stats APIs
 const githubStatsBaseUrl =
   process.env.NEXT_PUBLIC_GITHUB_STATS_URL ||
   "https://github-readme-stats.vercel.app";
@@ -11,6 +12,7 @@ const githubStreakBaseUrl =
   process.env.NEXT_PUBLIC_GITHUB_STREAK_STATS_URL ||
   "https://github-readme-streak-stats.herokuapp.com";
 
+// About section: bio, stats, GitHub cards (top langs, main stats, streak), skill icons, pinned repo
 const AboutDetails = () => {
   return (
     <section className="py-20 w-full">

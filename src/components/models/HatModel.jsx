@@ -6,6 +6,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
+// About page 3D hat: continuous Y rotation for a simple spin effect
 const HatModel = React.memo(function HatModel(props) {
   // Use React.memo for performance optimization
   const { nodes, materials } = useGLTF("/models/hat-transformed.glb");

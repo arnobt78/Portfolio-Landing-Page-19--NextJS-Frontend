@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+// Slide-up + fade on enter
 const item = {
   hidden: { opacity: 0, y: 100 },
   show: { opacity: 1, y: 0 },
 };
 
 const ProjectLink = motion.create(Link);
+// Single project row: links to demoLink (opens in new tab), shows name, description, date
 const ProjectLayout = ({ name, description, date, demoLink }) => {
   return (
     <ProjectLink

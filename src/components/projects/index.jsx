@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import ProjectLayout from "./ProjectLayout";
 
+// Staggered list entrance with 1.5s initial delay
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -13,6 +14,7 @@ const container = {
   },
 };
 
+// Renders projects from data.js (or any array of { name, description, date, demoLink })
 const ProjectList = ({ projects }) => {
   return (
     <motion.div

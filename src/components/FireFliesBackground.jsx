@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
+// Returns a single firefly with random position and animation duration (5–10s)
 const createFirefly = () => ({
   id: Math.random(),
   top: `${Math.random() * 100}%`,
@@ -8,9 +9,11 @@ const createFirefly = () => ({
   animationDuration: `${Math.random() * 5 + 5}s`,
 });
 
+// Ambient effect: adds glowing dots that move using the "move" keyframe from globals.css
 const FireFliesBackground = () => {
   const [fireflies, setFireflies] = useState([]);
 
+  // Add one firefly per second; keep only the last 14 to limit DOM nodes
   useEffect(() => {
     const addFireflyPeriodically = () => {
       const newFirefly = createFirefly();

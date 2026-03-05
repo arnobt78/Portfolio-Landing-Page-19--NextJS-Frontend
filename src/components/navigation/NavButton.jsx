@@ -14,6 +14,7 @@ import ResponsiveComponent from "../ResponsiveComponent";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 
+// Maps BtnList icon names to Lucide components
 const getIcon = (icon) => {
   switch (icon) {
     case "home":
@@ -45,6 +46,7 @@ const item = {
 
 const NavLink = motion.create(Link);
 
+// Single nav item: icon + hover tooltip; x/y used for circular layout on desktop
 const NavButton = ({
   x,
   y,
@@ -57,6 +59,7 @@ const NavButton = ({
   return (
     <ResponsiveComponent>
       {({ size }) => {
+        // Desktop: position with transform; mobile: flow in column, labelDirection for tooltip side
         return size && size >= 480 ? (
           <div
             className="absolute cursor-pointer z-50"

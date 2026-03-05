@@ -5,6 +5,7 @@ import emailjs from "@emailjs/browser";
 import { Toaster, toast } from "sonner";
 import { motion } from "framer-motion";
 
+// Form entrance animation
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -21,6 +22,7 @@ const item = {
   show: { scale: 1 },
 };
 
+// Contact form: react-hook-form validation; by default shows demo toast; uncomment emailjs block + set env for real sending
 export default function Form() {
   const {
     register,
@@ -28,11 +30,12 @@ export default function Form() {
     formState: { errors },
   } = useForm();
 
+  // Demo mode: toast only. Enable EmailJS by setting env vars and uncommenting the emailjs.send block below
   const sendEmail = (params) => {
     const toastId = toast.loading("Sending your message, please wait...");
 
     toast.info(
-      "Form submissions are demo-only here. Please checkout the final code repo to enable it. If you want to connect you can reach out to me via john@doe.com.",
+      "Form submissions are demo-only here. Please check out the final code repo to enable it. If you want to connect you can reach out to me via john@doe.com.",
       {
         id: toastId,
       },
@@ -48,7 +51,7 @@ export default function Form() {
     //     {
     //       publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
     //       limitRate: {
-    //         throttle: 5000, // you can not send more then 1 email per 5 seconds
+    //         throttle: 5000, // you can not send more than 1 email per 5 seconds
     //       },
     //     }
     //   )
@@ -87,6 +90,7 @@ export default function Form() {
   return (
     <>
       <Toaster richColors={true} />
+      {/* Framer Motion variants for staggered field appearance */}
       <motion.form
         variants={container}
         initial="hidden"
@@ -102,7 +106,7 @@ export default function Form() {
             required: "This field is required!",
             minLength: {
               value: 3,
-              message: "Name should be atleast 3 characters long.",
+              message: "Name should be at least 3 characters long.",
             },
           })}
           className="w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg"

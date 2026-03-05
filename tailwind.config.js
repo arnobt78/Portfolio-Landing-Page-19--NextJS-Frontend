@@ -10,6 +10,7 @@ module.exports = {
       fontFamily:{
         inter: ['var(--font-inter)']
       },
+      // Map to CSS variables from globals.css
       colors:{
         background: 'rgb(var(--background))',
         foreground: 'rgb(var(--foreground))',

@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import clsx from "clsx";
 import React, { Suspense } from "react";
 
+// Wrapper for Three.js Canvas: provides lighting (Environment) and renders child 3D model(s)
 const RenderModel = ({ children, className }) => {
   return (
     <Canvas
@@ -13,6 +14,7 @@ const RenderModel = ({ children, className }) => {
       // dpr is the device pixel ratio. Here we are setting it to 1 and 2 for retina displays to prevent blurriness in the model rendering on high resolution screens.
     >
       <Suspense fallback={null}>{children}</Suspense>
+      {/* Default lighting for the scene */}
       <Environment preset="dawn" />
     </Canvas>
   );

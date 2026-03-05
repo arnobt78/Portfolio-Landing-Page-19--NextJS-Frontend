@@ -6,6 +6,7 @@ import useScreenSize from "../hooks/useScreenSize";
 import ResponsiveComponent from "../ResponsiveComponent";
 import { motion } from "framer-motion";
 
+// Staggered fade-in for nav items
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -16,6 +17,7 @@ const container = {
   },
 };
 
+// Main nav: circular ring on desktop (≥480px), two columns on small screens; positions use polar math
 const Navigation = () => {
   const angleIncrement = 360 / BtnList.length;
   const size = useScreenSize();
@@ -26,6 +28,7 @@ const Navigation = () => {
     <div className="w-full fixed h-screen flex items-center justify-center">
       <ResponsiveComponent>
         {({ size }) => {
+          // Circular layout: each button placed by angle; radius scales with breakpoint
           return size && size >= 480 ? (
             <motion.div
               variants={container}
@@ -47,6 +50,7 @@ const Navigation = () => {
               })}
             </motion.div>
           ) : (
+            // Mobile: split BtnList into left and right columns
             <>
               <motion.div
                 variants={container}
