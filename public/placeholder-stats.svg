@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+  <rect width="400" height="200" fill="rgba(27,27,27,0.9)" stroke="#FEFE5B" stroke-width="1" rx="8"/>
+  <text x="200" y="95" fill="#FEFE5B" font-family="system-ui,sans-serif" font-size="16" text-anchor="middle">Stats / chart placeholder</text>
+  <text x="200" y="118" fill="rgba(225,225,225,0.8)" font-family="system-ui,sans-serif" font-size="12" text-anchor="middle">API unavailable — demo mode</text>
+</svg>
